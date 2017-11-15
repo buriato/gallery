@@ -1,6 +1,4 @@
-<?php
-ini_set('display_errors', 1);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,10 +18,7 @@ ini_set('display_errors', 1);
       </form>
     </section>
     <section class="gallery">
-      <div class="gallery-item">
-        <a href="img/gallery/1.jpg" class="image-container" target="_blank"><img src="img/gallery/thumbs/1.jpg" alt="Image 1" class="image"></a>
-        <div class="desc"></div>
-      </div>
+      <?php include_once 'includes/show-gallery.inc.php'; ?>
     </section>
   </body>
 </html>

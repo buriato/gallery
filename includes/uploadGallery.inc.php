@@ -1,9 +1,9 @@
 <?php
 
 ini_set('display_errors', 1);
-include_once '../config.php';
-$target_dir = SITE_ROOT . "/img/gallery_images/big/";
-$target_thumbs_dir = SITE_ROOT . "/img/gallery_images/thumbs/";
+
+$target_dir = "../img/gallery_images/big/";
+$target_thumbs_dir = "../img/gallery_images/thumbs/";
 $fileName = $_FILES['fileToUpload']['name'];
 $fileTempName = $_FILES['fileToUpload']['tmp_name'];
 $fileSize = ($_FILES['fileToUpload']['size']) / 1024;
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 
 // 	Check file size
 
-  if ($_FILES["fileToUpload"]["size"] > 5000000) {
+  if ($_FILES["fileToUpload"]["size"] > 500000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
   }
@@ -68,14 +68,12 @@ if (isset($_POST['submit'])) {
   } else {
     //mysql
 
-    include_once 'sqlconn.php';
+    include_once 'sqlconn.inc.php';
 
     $sql = "INSERT INTO `images` (`image_name`,`image_size`,`image_path`,`thumb_path`,`image_upload_time`,`image_type`) VALUES ('$fileName','$fileSize','$target_dir','$target_thumbs_dir','$uploadTime', '$imageFileType');";
 
     if (!mysqli_query($conn, $sql)) {
       echo 'Error: ' . $sql . ' ' . mysqli_error($conn);
-    } else {
-      echo 'Added to database';
     }
 
     // 		create thumb
@@ -86,9 +84,9 @@ if (isset($_POST['submit'])) {
     imagedestroy($src);
     imagejpeg($dst, $target_thumb);
     imagedestroy($dst);
+    mysqli_close($conn);
     if (move_uploaded_file($fileTempName, $target_file)) {
-
-      echo "The file " . basename($_FILES['fileToUpload']['name']) . " has been uploaded.";
+      header("Location: http://localhost/dynamic/geek/gallery");
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
