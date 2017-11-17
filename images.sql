@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 15, 2017 at 07:21 PM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Creato il: Nov 17, 2017 alle 18:44
+-- Versione del server: 10.1.25-MariaDB
+-- Versione PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,39 +25,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Struttura della tabella `images`
 --
 
 CREATE TABLE `images` (
   `image_id` int(11) NOT NULL,
-  `image_name` varchar(256) NOT NULL,
-  `image_size` int(11) NOT NULL,
-  `image_path` varchar(256) NOT NULL,
-  `thumb_path` varchar(256) NOT NULL,
+  `image_name` varchar(256) DEFAULT NULL,
+  `image_size` int(11) DEFAULT NULL,
+  `image_path` varchar(512) DEFAULT NULL,
+  `thumb_path` varchar(512) DEFAULT NULL,
   `image_viewed` int(11) DEFAULT NULL,
-  `image_upload_time` datetime NOT NULL,
-  `image_type` varchar(30) NOT NULL
+  `image_upload_time` datetime DEFAULT NULL,
+  `image_type` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `images`
+-- Indici per le tabelle `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `images`
+-- AUTO_INCREMENT per la tabella `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

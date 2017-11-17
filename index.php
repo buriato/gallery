@@ -1,4 +1,7 @@
-
+<?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,15 +13,26 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <h1>Photo Gallery</h1>
-    <section class="upload">
-      <form action="includes/uploadGallery.inc.php" method="post" enctype="multipart/form-data">
-        <input type="file" class="file" name="fileToUpload" accept=".jpeg,.png,.jpg,.gif">
-        <input type="submit" value="Upload Image" name="submit">
-      </form>
-    </section>
-    <section class="gallery">
-      <?php include_once 'includes/show-gallery.inc.php'; ?>
-    </section>
+    <div class="wrapper">
+      <div class="main-content">
+        <h1>Photo Gallery</h1>
+        <section class="upload">
+          <form action="includes/upload-gallery.inc.php" method="post" enctype="multipart/form-data" class="form__upload">
+            <input type="file" class="input-file" name="fileToUpload" accept=".jpeg,.png,.jpg,.gif" id="file">
+            <label class="button" for="file">Seleziona imagine...</label>
+            <input type="submit" class="button" value="Upload Image" name="submit">
+          </form>
+          <form action="includes/show-image.inc.php" method="get" enctype="multipart/form-data" class="form__view">
+            <input type="number" class="file_id" name="file_id">
+            <input type="submit" class="button" value="Show Image" name="submit">
+          </form>
+        </section>
+        <section class="gallery">
+          <?php include_once 'includes/show-gallery.inc.php';?>
+        </section>
+      </div>
+
+      <footer class="main-footer">Copyright &copy; <?php echo date("Y"); ?></footer>
+    </div>
   </body>
 </html>
