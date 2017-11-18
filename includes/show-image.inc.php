@@ -9,7 +9,7 @@ $output = '';
 
 $sql       = "SELECT * FROM images WHERE `image_id` = '$image_id'";
 $result    = mysqli_query($conn, $sql);
-$sqlViewed = "UPDATE `images` SET `image_viewed`=`image_viewed`+1 WHERE `image_id`=";
+$sqlViewed = "UPDATE images SET `image_viewed`=`image_viewed`+1 WHERE `image_id`=";
 if (mysqli_num_rows($result)) {
   $sqlAddViewed = mysqli_query($conn, $sqlViewed . $image_id);
   $row          = mysqli_fetch_assoc($result);

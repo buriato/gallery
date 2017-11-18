@@ -4,7 +4,7 @@ CREATE TABLE `images` (
   `image_size` int(11),
   `image_path` varchar(512),
   `thumb_path` varchar(512),
-  `image_viewed` int(11),
+  `image_viewed` int(11) NOT NULL,
   `image_upload_time` datetime,
   `image_type` varchar(30)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
